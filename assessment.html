@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Career Interest Assessment | Career Guidance System</title>
+  <meta name="description" content="Discover your ideal career path with our interactive student questionnaire and aptitude analysis.">
+  <link rel="icon" type="image/png" href="assets/images/logo.png">
+
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+
+  <style>
+    .assessment-hero {
+      background: linear-gradient(135deg, var(--primary) 0%, #173872 100%);
+      color: #FFFFFF;
+      padding: 48px 0;
+      text-align: center;
+      margin-bottom: 36px;
+    }
+
+    .assessment-container {
+      max-width: 800px;
+      margin: 0 auto 80px;
+    }
+
+    .assessment-progress-wrapper {
+      background-color: #FFFFFF;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 20px 24px;
+      margin-bottom: 28px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .progress-labels {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--primary);
+    }
+
+    .progress-bar-outer {
+      height: 8px;
+      background-color: #EEF2F6;
+      border-radius: var(--radius-full);
+      overflow: hidden;
+    }
+
+    .progress-bar-inner {
+      height: 100%;
+      background: linear-gradient(90deg, var(--secondary) 0%, var(--accent) 100%);
+      width: 12.5%;
+      border-radius: var(--radius-full);
+      transition: width var(--transition-normal);
+    }
+
+    .question-card {
+      background-color: #FFFFFF;
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--border-color);
+      box-shadow: var(--shadow-md);
+      padding: 36px;
+      margin-bottom: 24px;
+    }
+
+    .question-title {
+      font-size: 1.45rem;
+      color: var(--primary);
+      margin-bottom: 8px;
+      line-height: 1.35;
+    }
+
+    .question-subtitle {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      margin-bottom: 26px;
+    }
+
+    .options-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .option-item {
+      display: flex;
+      align-items: center;
+      padding: 16px 20px;
+      border: 2px solid var(--border-color);
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      background-color: #FFFFFF;
+      transition: all var(--transition-fast);
+      user-select: none;
+    }
+
+    .option-item:hover {
+      border-color: var(--secondary-light);
+      background-color: #F8FAFC;
+      transform: translateX(4px);
+    }
+
+    .option-item.selected {
+      border-color: var(--secondary);
+      background-color: rgba(53, 106, 230, 0.05);
+      box-shadow: 0 4px 12px rgba(53, 106, 230, 0.12);
+    }
+
+    .option-radio {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      border: 2px solid var(--border-color);
+      margin-right: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: all var(--transition-fast);
+    }
+
+    .option-item.selected .option-radio {
+      border-color: var(--secondary);
+      background-color: var(--secondary);
+    }
+
+    .option-item.selected .option-radio::after {
+      content: '';
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: #FFFFFF;
+    }
+
+    .option-text {
+      font-size: 0.98rem;
+      color: var(--text-main);
+      font-weight: 500;
+    }
+
+    .option-item.selected .option-text {
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    .nav-buttons-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    /* Result Section Styling */
+    .result-card {
+      background-color: #FFFFFF;
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--border-color);
+      box-shadow: var(--shadow-lg);
+      padding: 44px;
+      text-align: center;
+      margin-bottom: 32px;
+    }
+
+    .match-gauge-circle {
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      background: conic-gradient(var(--secondary) 0% 92%, #EEF2F6 92% 100%);
+      margin: 0 auto 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .match-gauge-inner {
+      width: 104px;
+      height: 104px;
+      background-color: #FFFFFF;
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .match-score-text {
+      font-family: var(--font-heading);
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--primary);
+      line-height: 1;
+    }
+
+    .match-score-label {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+  </style>
+
+  <!-- Lucide Icons -->
+  <script src="js/lucide.min.js"></script>
+  <script>if (!window.lucide) document.write('<script src="https://unpkg.com/lucide@latest"><\/script>');</script>
+</head>
+<body>
+
+  <!-- Header & Navigation -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="nav-brand">
+        <img src="assets/images/logo.png" alt="Career Guidance System Logo" class="nav-logo-img">
+        <div class="nav-brand-text">
+          <span class="nav-brand-title">Career Guidance</span>
+          <span class="nav-brand-subtitle">System</span>
+        </div>
+      </a>
+
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="index.html" class="nav-link"><i data-lucide="home"></i> Home</a></li>
+          <li><a href="careers.html" class="nav-link"><i data-lucide="compass"></i> Explore Careers</a></li>
+          <li><a href="assessment.html" class="nav-link active"><i data-lucide="clipboard-check"></i> Assessment</a></li>
+          <li><a href="dashboard.html" class="nav-link"><i data-lucide="layout-dashboard"></i> Dashboard</a></li>
+          <li class="mobile-actions">
+            <a href="dashboard.html" class="btn btn-outline btn-full">Dashboard</a>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="login.html" class="btn btn-outline btn-sm">Log In</a>
+        <a href="register.html" class="btn btn-primary btn-sm">Register</a>
+      </div>
+
+      <button class="mobile-toggle" aria-label="Toggle navigation menu">
+        <i data-lucide="menu"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- Assessment Hero Banner -->
+  <section class="assessment-hero">
+    <div class="container">
+      <span class="badge badge-accent" style="margin-bottom: 10px;">Interest & Aptitude Assessment</span>
+      <h1 style="color: #FFFFFF; font-size: 2.3rem; margin-bottom: 8px;">
+        Discover Your Ideal Career Calling
+      </h1>
+      <p style="color: #CBD5E1; font-size: 1.05rem; max-width: 600px; margin: 0 auto;">
+        Answer 8 straightforward questions about your interests, work styles, and goals to reveal your top career sector match.
+      </p>
+    </div>
+  </section>
+
+  <!-- Main Assessment Area -->
+  <main class="container assessment-container">
+
+    <!-- Active Assessment Questionnaire View -->
+    <div id="assessment-questionnaire-view">
+      <!-- Progress Bar -->
+      <div class="assessment-progress-wrapper">
+        <div class="progress-labels">
+          <span id="question-progress-text">Question 1 of 8</span>
+          <span id="percentage-progress-text">12% Completed</span>
+        </div>
+        <div class="progress-bar-outer">
+          <div class="progress-bar-inner" id="progress-bar"></div>
+        </div>
+      </div>
+
+      <!-- Question Card -->
+      <div class="question-card" id="question-card-container">
+        <!-- Rendered dynamically by assessment.js -->
+      </div>
+
+      <!-- Navigation Buttons -->
+      <div class="nav-buttons-row">
+        <button type="button" class="btn btn-outline" id="btn-prev-question" disabled>
+          <i data-lucide="chevron-left"></i> Previous
+        </button>
+
+        <button type="button" class="btn btn-primary" id="btn-next-question">
+          <span>Next Question</span>
+          <i data-lucide="chevron-right"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Assessment Results View (Initially Hidden) -->
+    <div id="assessment-results-view" style="display: none;">
+      <div class="result-card">
+        <span class="badge badge-success" style="margin-bottom: 16px;">
+          <i data-lucide="award" style="width: 14px; height: 14px;"></i> Assessment Complete!
+        </span>
+
+        <!-- Dynamic Gauge -->
+        <div class="match-gauge-circle" id="result-gauge">
+          <div class="match-gauge-inner">
+            <span class="match-score-text" id="result-percentage">94%</span>
+            <span class="match-score-label">Match Score</span>
+          </div>
+        </div>
+
+        <h2 style="font-size: 2rem; color: var(--primary); margin-bottom: 8px;" id="result-top-category">
+          Information Technology
+        </h2>
+        <p style="font-size: 1.1rem; color: var(--secondary); font-weight: 600; margin-bottom: 18px;" id="result-subtitle">
+          Strong Analytical, Logical & Technical Problem-Solving Profile
+        </p>
+        <p style="font-size: 0.95rem; color: var(--text-muted); max-width: 620px; margin: 0 auto 30px; line-height: 1.7;" id="result-description">
+          Your answers demonstrate high curiosity for computer systems, software logic, coding, and building digital tools that reach global scale.
+        </p>
+
+        <!-- Secondary match pill -->
+        <div style="background-color: var(--bg-main); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 14px 20px; display: inline-flex; align-items: center; gap: 10px; margin-bottom: 30px;">
+          <i data-lucide="shuffle" style="color: var(--secondary); width: 18px; height: 18px;"></i>
+          <span style="font-size: 0.9rem; color: var(--text-main);">
+            Secondary Fit: <strong id="result-secondary-category" style="color: var(--primary);">Arts & Design</strong> (78% Alignment)
+          </span>
+        </div>
+
+        <div style="display: flex; justify-content: center; gap: 14px; flex-wrap: wrap;">
+          <button class="btn btn-primary" id="btn-save-results-dashboard">
+            <i data-lucide="check-circle"></i> Save Results to My Dashboard
+          </button>
+          <button class="btn btn-outline" id="btn-retake-assessment">
+            <i data-lucide="rotate-ccw"></i> Retake Questionnaire
+          </button>
+        </div>
+      </div>
+
+      <!-- Suggested Careers Section for this Result -->
+      <div style="margin-top: 40px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; flex-wrap: wrap; gap: 12px;">
+          <div>
+            <h3 style="font-size: 1.5rem; color: var(--primary);">Curated Career Matches For Your Profile</h3>
+            <p style="font-size: 0.95rem; color: var(--text-muted);">
+              Recommended roles based on your aptitude and preferences:
+            </p>
+          </div>
+          <a href="careers.html" class="btn btn-outline btn-sm">Explore All Careers →</a>
+        </div>
+
+        <div class="categories-grid" id="matched-careers-grid">
+          <!-- Rendered dynamically -->
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom" style="border-top: none; padding-top: 0;">
+        <div>&copy; 2026 Career Guidance System. All rights reserved.</div>
+        <div class="footer-legal-links">
+          <a href="index.html">Home</a>
+          <a href="careers.html">Explore Careers</a>
+          <a href="dashboard.html">My Dashboard</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
+  <script src="js/assessment.js"></script>
+</body>
+</html>

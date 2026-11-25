@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Your Student Account | Career Guidance System</title>
+  <meta name="description" content="Register as a student to access personalized career roadmaps and assessments.">
+  <link rel="icon" type="image/png" href="assets/images/logo.png">
+
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/auth.css">
+  <link rel="stylesheet" href="css/responsive.css">
+
+  <!-- Lucide Icons -->
+  <script src="js/lucide.min.js"></script>
+  <script>if (!window.lucide) document.write('<script src="https://unpkg.com/lucide@latest"><\/script>');</script>
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="nav-brand">
+        <img src="assets/images/logo.png" alt="Career Guidance System Logo" class="nav-logo-img">
+        <div class="nav-brand-text">
+          <span class="nav-brand-title">Career Guidance</span>
+          <span class="nav-brand-subtitle">System</span>
+        </div>
+      </a>
+
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="index.html" class="nav-link"><i data-lucide="home"></i> Home</a></li>
+          <li><a href="careers.html" class="nav-link"><i data-lucide="compass"></i> Explore Careers</a></li>
+          <li><a href="assessment.html" class="nav-link"><i data-lucide="clipboard-check"></i> Assessment</a></li>
+          <li class="mobile-actions">
+            <a href="login.html" class="btn btn-outline btn-full">Already have an account? Log In</a>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="login.html" class="btn btn-outline btn-sm">Log In</a>
+      </div>
+
+      <button class="mobile-toggle" aria-label="Toggle navigation menu">
+        <i data-lucide="menu"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- Registration Content Area -->
+  <div class="auth-wrapper">
+    <div class="auth-card auth-card-wide">
+      <div class="auth-header">
+        <a href="index.html" class="auth-logo-link">
+          <img src="assets/images/logo.png" alt="Logo" class="auth-logo-img">
+        </a>
+        <h1 class="auth-title">Create Your Student Account</h1>
+        <p class="auth-subtitle">Join Career Guidance System to explore paths and receive tailored career advice</p>
+      </div>
+
+      <!-- Quick Demo Auto-fill Helper -->
+      <div class="demo-banner">
+        <div class="demo-banner-text">
+          <i data-lucide="sparkles" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 4px; color: var(--secondary);"></i>
+          Want to test quickly? Click <strong>Auto-Fill Sample Data</strong> to populate the form instantly.
+        </div>
+        <button type="button" class="btn-demo-fill" id="btn-fill-sample">Auto-Fill Sample</button>
+      </div>
+
+      <!-- Form Alert Banner -->
+      <div class="auth-alert" id="register-alert"></div>
+
+      <!-- Registration Form -->
+      <form id="registration-form" novalidate>
+
+        <!-- Section 1: Personal Information -->
+        <div class="form-section-title">
+          <i data-lucide="user" style="color: var(--secondary); width: 20px; height: 20px;"></i>
+          <span>1. Personal Information</span>
+        </div>
+
+        <div class="form-grid-2">
+          <div class="form-group">
+            <label class="form-label" for="full-name">
+              Full Name <span class="required">*</span>
+            </label>
+            <div class="input-with-icon">
+              <span class="input-icon"><i data-lucide="user"></i></span>
+              <input type="text" id="full-name" class="form-control" placeholder="e.g. John Doe" required>
+            </div>
+            <div class="field-error-message" id="err-full-name">Please enter your full name.</div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="email">
+              Email Address <span class="required">*</span>
+            </label>
+            <div class="input-with-icon">
+              <span class="input-icon"><i data-lucide="mail"></i></span>
+              <input type="email" id="email" class="form-control" placeholder="student@example.com" required>
+            </div>
+            <div class="field-error-message" id="err-email">Please enter a valid email address.</div>
+          </div>
+        </div>
+
+        <div class="form-grid-2">
+          <div class="form-group">
+            <label class="form-label" for="phone">
+              Phone Number <span class="required">*</span>
+            </label>
+            <div class="input-with-icon">
+              <span class="input-icon"><i data-lucide="phone"></i></span>
+              <input type="tel" id="phone" class="form-control" placeholder="10-digit mobile number" required>
+            </div>
+            <div class="field-error-message" id="err-phone">Please enter a valid 10-digit phone number.</div>
+          </div>
+
+          <div class="form-grid-2" style="gap: 12px;">
+            <div class="form-group">
+              <label class="form-label" for="dob">
+                Date of Birth <span class="required">*</span>
+              </label>
+              <input type="date" id="dob" class="form-control" required>
+              <div class="field-error-message" id="err-dob">Please select date of birth.</div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="gender">
+                Gender <span class="required">*</span>
+              </label>
+              <select id="gender" class="form-control" required>
+                <option value="">Select</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+                <option value="Prefer not to say">Prefer not to say</option>
+              </select>
+              <div class="field-error-message" id="err-gender">Select gender.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section 2: Educational Information -->
+        <div class="form-section-title">
+          <i data-lucide="graduation-cap" style="color: var(--secondary); width: 20px; height: 20px;"></i>
+          <span>2. Educational Information</span>
+        </div>
+
+        <div class="form-grid-2">
+          <div class="form-group">
+            <label class="form-label" for="education-level">
+              Current Education Level <span class="required">*</span>
+            </label>
+            <select id="education-level" class="form-control" required>
+              <option value="">-- Select Education Level --</option>
+              <option value="SSLC">SSLC (10th Standard)</option>
+              <option value="Higher Secondary">Higher Secondary (11th / 12th)</option>
+              <option value="Diploma">Diploma (Polytechnic / Vocational)</option>
+              <option value="Undergraduate">Undergraduate (B.Tech, B.Sc, B.Com, BCA, etc.)</option>
+              <option value="Postgraduate">Postgraduate (M.Tech, M.Sc, MBA, MCA, etc.)</option>
+              <option value="Graduate">Graduate (Degree Completed)</option>
+            </select>
+            <div class="field-error-message" id="err-education-level">Please select your current education level.</div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="qualification">
+              Current / Completed Qualification <span class="required">*</span>
+            </label>
+            <div class="input-with-icon">
+              <span class="input-icon"><i data-lucide="award"></i></span>
+              <input type="text" id="qualification" class="form-control" placeholder="e.g. 12th Bio-Maths / B.Sc Computer Science" required>
+            </div>
+            <div class="field-error-message" id="err-qualification">Please specify your qualification.</div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="school-name">
+            School / College / Institution Name <span class="required">*</span>
+          </label>
+          <div class="input-with-icon">
+            <span class="input-icon"><i data-lucide="building"></i></span>
+            <input type="text" id="school-name" class="form-control" placeholder="e.g. St. Xavier's Higher Secondary / IIT Madras" required>
+          </div>
+          <div class="field-error-message" id="err-school-name">Please enter school or college name.</div>
+        </div>
+
+        <div class="form-grid-2">
+          <div class="form-group">
+            <label class="form-label" for="stream">
+              Stream / Course <span class="required">*</span>
+            </label>
+            <div class="input-with-icon">
+              <span class="input-icon"><i data-lucide="book"></i></span>
+              <input type="text" id="stream" class="form-control" placeholder="e.g. Science / Commerce / Computer Science" required>
+            </div>
+            <div class="field-error-message" id="err-stream">Please enter your stream or course.</div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="completion-year">
+              Year of Completion <span class="required">*</span>
+            </label>
+            <div class="input-with-icon">
+              <span class="input-icon"><i data-lucide="calendar"></i></span>
+              <input type="number" id="completion-year" class="form-control" placeholder="e.g. 2026" min="1990" max="2035" required>
+            </div>
+            <div class="field-error-message" id="err-completion-year">Please enter a valid 4-digit year.</div>
+          </div>
+        </div>
+
+        <!-- Section 3: Account Information -->
+        <div class="form-section-title">
+          <i data-lucide="lock" style="color: var(--secondary); width: 20px; height: 20px;"></i>
+          <span>3. Account Security Credentials</span>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="username">
+            Username <span class="required">*</span>
+          </label>
+          <div class="input-with-icon">
+            <span class="input-icon"><i data-lucide="at-sign"></i></span>
+            <input type="text" id="username" class="form-control" placeholder="Choose a unique username" required>
+          </div>
+          <div class="field-error-message" id="err-username">Username must be at least 3 characters.</div>
+        </div>
+
+        <div class="form-grid-2">
+          <div class="form-group">
+            <label class="form-label" for="password">
+              Password <span class="required">*</span>
+            </label>
+            <div class="input-with-icon">
+              <span class="input-icon"><i data-lucide="lock"></i></span>
+              <input type="password" id="password" class="form-control" placeholder="At least 6 characters" required>
+              <button type="button" class="password-toggle-btn" data-target="password" aria-label="Toggle password visibility">
+                <i data-lucide="eye"></i>
+              </button>
+            </div>
+            <div class="password-strength-bar">
+              <div class="password-strength-fill" id="strength-fill"></div>
+            </div>
+            <div class="password-hint" id="strength-text">Password strength: Empty</div>
+            <div class="field-error-message" id="err-password">Password must be at least 6 characters.</div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="confirm-password">
+              Confirm Password <span class="required">*</span>
+            </label>
+            <div class="input-with-icon">
+              <span class="input-icon"><i data-lucide="check"></i></span>
+              <input type="password" id="confirm-password" class="form-control" placeholder="Re-type password" required>
+              <button type="button" class="password-toggle-btn" data-target="confirm-password" aria-label="Toggle password visibility">
+                <i data-lucide="eye"></i>
+              </button>
+            </div>
+            <div class="field-error-message" id="err-confirm-password">Passwords do not match.</div>
+          </div>
+        </div>
+
+        <!-- Additional: Terms and Conditions checkbox -->
+        <div class="form-group" style="margin-top: 10px;">
+          <label class="checkbox-container">
+            <input type="checkbox" id="terms-agree" required>
+            <span class="custom-checkmark"></span>
+            <span>I agree to the <a href="#" id="view-terms-link" style="color: var(--secondary); text-decoration: underline;">Terms and Conditions</a> and Student Privacy Policy. <span class="required">*</span></span>
+          </label>
+          <div class="field-error-message" id="err-terms">You must agree to the terms to register.</div>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="btn btn-primary btn-full btn-lg" style="margin-top: 14px;">
+          <i data-lucide="user-plus"></i>
+          <span>Register Account</span>
+        </button>
+      </form>
+
+      <div class="auth-footer">
+        Already have an account? <a href="login.html">Login here</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
+  <script src="js/register.js"></script>
+</body>
+</html>

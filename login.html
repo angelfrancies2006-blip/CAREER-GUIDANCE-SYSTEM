@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Login | Career Guidance System</title>
+  <meta name="description" content="Log in to your student dashboard to access career recommendations, roadmaps, and assessments.">
+  <link rel="icon" type="image/png" href="assets/images/logo.png">
+
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/auth.css">
+  <link rel="stylesheet" href="css/responsive.css">
+
+  <!-- Lucide Icons -->
+  <script src="js/lucide.min.js"></script>
+  <script>if (!window.lucide) document.write('<script src="https://unpkg.com/lucide@latest"><\/script>');</script>
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="nav-brand">
+        <img src="assets/images/logo.png" alt="Career Guidance System Logo" class="nav-logo-img">
+        <div class="nav-brand-text">
+          <span class="nav-brand-title">Career Guidance</span>
+          <span class="nav-brand-subtitle">System</span>
+        </div>
+      </a>
+
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="index.html" class="nav-link"><i data-lucide="home"></i> Home</a></li>
+          <li><a href="careers.html" class="nav-link"><i data-lucide="compass"></i> Explore Careers</a></li>
+          <li><a href="assessment.html" class="nav-link"><i data-lucide="clipboard-check"></i> Assessment</a></li>
+          <li class="mobile-actions">
+            <a href="register.html" class="btn btn-primary btn-full">Create Free Account</a>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="register.html" class="btn btn-primary btn-sm">Register Free</a>
+      </div>
+
+      <button class="mobile-toggle" aria-label="Toggle navigation menu">
+        <i data-lucide="menu"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- Login Content Area -->
+  <div class="auth-wrapper">
+    <div class="auth-card">
+      <div class="auth-header">
+        <a href="index.html" class="auth-logo-link">
+          <img src="assets/images/logo.png" alt="Logo" class="auth-logo-img">
+        </a>
+        <h1 class="auth-title">Welcome Back</h1>
+        <p class="auth-subtitle">Sign in with your student credentials to access your personalized dashboard</p>
+      </div>
+
+      <!-- Quick Demo Account One-Click Login -->
+      <div class="demo-banner">
+        <div class="demo-banner-text">
+          <div><strong>Demo Student Profile:</strong></div>
+          <div style="font-size: 0.8rem; color: var(--text-muted);">student@example.com / Password123</div>
+        </div>
+        <button type="button" class="btn-demo-fill" id="btn-quick-demo">1-Click Demo Login</button>
+      </div>
+
+      <!-- Form Alert Banner -->
+      <div class="auth-alert" id="login-alert"></div>
+
+      <!-- Login Form -->
+      <form id="login-form" novalidate>
+        <div class="form-group">
+          <label class="form-label" for="login-email">
+            Email Address <span class="required">*</span>
+          </label>
+          <div class="input-with-icon">
+            <span class="input-icon"><i data-lucide="mail"></i></span>
+            <input type="email" id="login-email" class="form-control" placeholder="Enter your registered email" required autocomplete="email">
+          </div>
+          <div class="field-error-message" id="err-login-email">Please enter a valid email address.</div>
+        </div>
+
+        <div class="form-group">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 7px;">
+            <label class="form-label" for="login-password" style="margin-bottom: 0;">
+              Password <span class="required">*</span>
+            </label>
+            <a href="#" id="forgot-password-link" style="font-size: 0.82rem; color: var(--secondary); text-decoration: underline;">
+              Forgot Password?
+            </a>
+          </div>
+          <div class="input-with-icon">
+            <span class="input-icon"><i data-lucide="lock"></i></span>
+            <input type="password" id="login-password" class="form-control" placeholder="Enter your password" required autocomplete="current-password">
+            <button type="button" class="password-toggle-btn" id="login-password-toggle" aria-label="Toggle password visibility">
+              <i data-lucide="eye"></i>
+            </button>
+          </div>
+          <div class="field-error-message" id="err-login-password">Password is required.</div>
+        </div>
+
+        <div class="form-options-row">
+          <label class="checkbox-container">
+            <input type="checkbox" id="remember-me" checked>
+            <span class="custom-checkmark"></span>
+            <span>Remember Me</span>
+          </label>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="btn btn-primary btn-full btn-lg">
+          <i data-lucide="log-in"></i>
+          <span>Log In to Dashboard</span>
+        </button>
+      </form>
+
+      <div class="auth-footer">
+        Don't have a student account yet? <a href="register.html">Create an Account</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
+  <script src="js/login.js"></script>
+</body>
+</html>

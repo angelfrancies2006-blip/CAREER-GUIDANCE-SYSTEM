@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Career Guidance System | Discover Your Future. Choose Your Career.</title>
+  <meta name="description" content="Explore career opportunities, discover your interests, and find the right educational path for your future.">
+  <link rel="icon" type="image/png" href="assets/images/logo.png">
+  
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  
+  <!-- Lucide Icons -->
+  <script src="js/lucide.min.js"></script>
+  <script>if (!window.lucide) document.write('<script src="https://unpkg.com/lucide@latest"><\/script>');</script>
+</head>
+<body>
+
+  <!-- ===================================================================
+       HEADER & NAVIGATION
+       =================================================================== -->
+  <header class="navbar" id="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="nav-brand">
+        <img src="assets/images/logo.png" alt="Career Guidance System Logo" class="nav-logo-img">
+        <div class="nav-brand-text">
+          <span class="nav-brand-title">Career Guidance</span>
+          <span class="nav-brand-subtitle">System</span>
+        </div>
+      </a>
+
+      <nav>
+        <ul class="nav-menu" id="nav-menu">
+          <li><a href="index.html" class="nav-link active"><i data-lucide="home"></i> Home</a></li>
+          <li><a href="careers.html" class="nav-link"><i data-lucide="compass"></i> Explore Careers</a></li>
+          <li><a href="assessment.html" class="nav-link"><i data-lucide="clipboard-check"></i> Assessment</a></li>
+          <li><a href="#why-us" class="nav-link"><i data-lucide="help-circle"></i> Why Us</a></li>
+          <li><a href="#how-it-works" class="nav-link"><i data-lucide="list-ordered"></i> How It Works</a></li>
+          <li><a href="#contact" class="nav-link"><i data-lucide="phone"></i> Contact</a></li>
+          <li class="mobile-actions">
+            <!-- Populated dynamically by main.js -->
+            <a href="login.html" class="btn btn-outline btn-full">Log In</a>
+            <a href="register.html" class="btn btn-primary btn-full">Register Free</a>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <!-- Populated dynamically by main.js based on auth state -->
+        <a href="login.html" class="btn btn-outline btn-sm">Log In</a>
+        <a href="register.html" class="btn btn-primary btn-sm">Register</a>
+      </div>
+
+      <button class="mobile-toggle" aria-label="Toggle navigation menu">
+        <i data-lucide="menu"></i>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <!-- ===================================================================
+         HERO SECTION
+         =================================================================== -->
+    <section class="hero-section">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <div class="hero-tagline">
+            <i data-lucide="sparkles"></i>
+            <span>Empowering Students to Explore • Discover • Choose</span>
+          </div>
+          <h1 class="hero-title">
+            Discover Your Future. <br>
+            <span class="text-gradient">Choose Your Career.</span>
+          </h1>
+          <p class="hero-description">
+            Your future starts with the right decision. Explore career opportunities, discover your interests and find the right path for your future.
+          </p>
+          <div class="hero-buttons">
+            <a href="careers.html" class="btn btn-primary btn-lg">
+              <i data-lucide="compass"></i>
+              <span>Explore Careers</span>
+            </a>
+            <a href="assessment.html" class="btn btn-accent btn-lg">
+              <i data-lucide="sparkles"></i>
+              <span>Get Started</span>
+            </a>
+          </div>
+          <div class="hero-stats">
+            <div class="hero-stat-item">
+              <span class="stat-number">20+</span>
+              <span class="stat-label">In-depth Career Paths</span>
+            </div>
+            <div class="hero-stat-item">
+              <span class="stat-number">7</span>
+              <span class="stat-label">Core Industry Categories</span>
+            </div>
+            <div class="hero-stat-item">
+              <span class="stat-number">100%</span>
+              <span class="stat-label">Free Student Guidance</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="hero-card-stack">
+            <!-- Floating badge 1 -->
+            <div class="hero-floating-pill pill-1">
+              <i data-lucide="check-circle" style="color: var(--success); width: 20px; height: 20px;"></i>
+              <div>
+                <div style="font-size: 0.82rem; font-weight: 700; color: var(--primary);">Assessment Ready</div>
+                <div style="font-size: 0.72rem; color: var(--text-muted);">Instant Career Matches</div>
+              </div>
+            </div>
+
+            <!-- Main Graphic Card -->
+            <div class="hero-banner-card">
+              <img src="assets/images/logo.png" alt="Career Guidance System Emblem" class="hero-card-img">
+              <h3 style="font-size: 1.35rem; color: var(--primary); margin-bottom: 6px;">Career Guidance System</h3>
+              <p style="font-size: 0.875rem; color: var(--text-muted); margin-bottom: 20px;">
+                Personalized roadmap from school to college to high-growth professions.
+              </p>
+              <div style="display: flex; justify-content: center; gap: 8px;">
+                <span class="badge badge-primary">School (10th/12th)</span>
+                <span class="badge badge-secondary">College</span>
+                <span class="badge badge-accent">Graduates</span>
+              </div>
+            </div>
+
+            <!-- Floating badge 2 -->
+            <div class="hero-floating-pill pill-2">
+              <i data-lucide="trending-up" style="color: var(--secondary); width: 20px; height: 20px;"></i>
+              <div>
+                <div style="font-size: 0.82rem; font-weight: 700; color: var(--primary);">94% Recommendation Accuracy</div>
+                <div style="font-size: 0.72rem; color: var(--text-muted);">Based on Interests & Skills</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         SECTION 1: WHY CHOOSE OUR PLATFORM?
+         =================================================================== -->
+    <section class="section" id="why-us">
+      <div class="container">
+        <div class="section-header">
+          <span class="badge badge-secondary section-badge">Why Choose Us</span>
+          <h2 class="section-title">Why Choose Our Platform?</h2>
+          <p class="section-subtitle">
+            Designed specifically for school and college students to navigate the modern job market with clarity and confidence.
+          </p>
+        </div>
+
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon-wrapper">
+              <i data-lucide="user-check"></i>
+            </div>
+            <h3 class="feature-title">Personalized Career Guidance</h3>
+            <p class="feature-desc">
+              Tailored career roadmaps shaped around your specific education level, strengths, interests, and future life aspirations.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon-wrapper">
+              <i data-lucide="map"></i>
+            </div>
+            <h3 class="feature-title">Explore Different Career Paths</h3>
+            <p class="feature-desc">
+              Browse deep profiles of top roles across Information Technology, Healthcare, Engineering, Business, Arts, Government, and Science.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon-wrapper">
+              <i data-lucide="compass"></i>
+            </div>
+            <h3 class="feature-title">Discover Your Interests</h3>
+            <p class="feature-desc">
+              Take our interactive career interest assessment to reveal your true aptitudes and unlock best-fit career recommendations.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon-wrapper">
+              <i data-lucide="graduation-cap"></i>
+            </div>
+            <h3 class="feature-title">Educational Guidance</h3>
+            <p class="feature-desc">
+              Get transparent lists of required degrees, certifications, key skills, and top recruiting companies for every single profession.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         SECTION 2: HOW IT WORKS
+         =================================================================== -->
+    <section class="section section-alt" id="how-it-works">
+      <div class="container">
+        <div class="section-header">
+          <span class="badge badge-primary section-badge">Simple 4-Step Process</span>
+          <h2 class="section-title">How It Works</h2>
+          <p class="section-subtitle">
+            Four simple steps to turn uncertainty into a clear, actionable roadmap for your dream career.
+          </p>
+        </div>
+
+        <div class="steps-grid">
+          <div class="step-card">
+            <span class="step-number">01</span>
+            <div class="step-icon-box">
+              <i data-lucide="user-plus"></i>
+            </div>
+            <h3 class="step-title">Step 1: Register Account</h3>
+            <p class="step-desc">
+              Create your free student profile with your contact details and secure login credentials.
+            </p>
+          </div>
+
+          <div class="step-card">
+            <span class="step-number">02</span>
+            <div class="step-icon-box">
+              <i data-lucide="book-open"></i>
+            </div>
+            <h3 class="step-title">Step 2: Enter Education</h3>
+            <p class="step-desc">
+              Tell us your current study level—whether SSLC, Higher Secondary, Diploma, Undergraduate, or Graduate.
+            </p>
+          </div>
+
+          <div class="step-card">
+            <span class="step-number">03</span>
+            <div class="step-icon-box">
+              <i data-lucide="clipboard-list"></i>
+            </div>
+            <h3 class="step-title">Step 3: Complete Assessment</h3>
+            <p class="step-desc">
+              Answer 8 engaging questions to evaluate your problem-solving style, preferred subjects, and work values.
+            </p>
+          </div>
+
+          <div class="step-card">
+            <span class="step-number">04</span>
+            <div class="step-icon-box">
+              <i data-lucide="award"></i>
+            </div>
+            <h3 class="step-title">Step 4: Explore Recommendations</h3>
+            <p class="step-desc">
+              Receive matched career paths, required skills, salary insights, and save your favorites to your personal dashboard.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         SECTION 3: POPULAR CAREER CATEGORIES
+         =================================================================== -->
+    <section class="section" id="categories">
+      <div class="container">
+        <div class="section-header">
+          <span class="badge badge-accent section-badge">Industry Sectors</span>
+          <h2 class="section-title">Popular Career Categories</h2>
+          <p class="section-subtitle">
+            Dive into seven core fields spanning emerging tech, healthcare, infrastructure, corporate finance, and public service.
+          </p>
+        </div>
+
+        <div class="categories-grid" id="homepage-categories-grid">
+          <!-- Populated from CAREER_CATEGORIES via JavaScript or fallback -->
+        </div>
+
+        <div style="text-align: center; margin-top: 40px;">
+          <a href="careers.html" class="btn btn-secondary btn-lg">
+            <span>View All Careers & Roles</span>
+            <i data-lucide="arrow-right"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         SECTION 4: FEATURED CAREERS SPOTLIGHT
+         =================================================================== -->
+    <section class="section section-alt">
+      <div class="container">
+        <div class="section-header">
+          <span class="badge badge-secondary section-badge">High Demand Roles</span>
+          <h2 class="section-title">Featured Career Profiles</h2>
+          <p class="section-subtitle">
+            A glance at some of the most sought-after careers in today's global economy.
+          </p>
+        </div>
+
+        <div class="categories-grid" id="featured-careers-grid">
+          <!-- Populated via script with 3 spotlight careers -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         SECTION 5: CALL TO ACTION SECTION
+         =================================================================== -->
+    <section class="container">
+      <div class="cta-section">
+        <div class="cta-content">
+          <span class="badge badge-accent" style="margin-bottom: 16px;">Take The First Step</span>
+          <h2 class="cta-title">Start Building Your Future Today.</h2>
+          <p class="cta-desc">
+            Join thousands of school and college students finding clarity, confidence, and direction with Career Guidance System.
+          </p>
+          <div style="display: flex; justify-content: center; gap: 14px; flex-wrap: wrap;">
+            <a href="register.html" class="btn btn-accent btn-lg">
+              <i data-lucide="user-plus"></i>
+              <span>Register Now Free</span>
+            </a>
+            <a href="assessment.html" class="btn btn-outline btn-lg" style="color: #FFFFFF; border-color: rgba(255,255,255,0.4);">
+              <i data-lucide="sparkles"></i>
+              <span>Take Assessment</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         ABOUT US & CONTACT ANCHORS
+         =================================================================== -->
+    <section class="section" id="about" style="border-top: 1px solid var(--border-color);">
+      <div class="container">
+        <div class="section-header">
+          <span class="badge badge-primary section-badge">About Our Mission</span>
+          <h2 class="section-title">Guiding Every Student to Success</h2>
+          <p class="section-subtitle">
+            Career Guidance System was founded to bridge the information gap faced by school and college students when deciding their life paths.
+          </p>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 32px; background: #FFFFFF; border-radius: var(--radius-xl); padding: 40px; border: 1px solid var(--border-color); box-shadow: var(--shadow-sm);">
+          <div>
+            <h3 style="font-size: 1.25rem; color: var(--primary); margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
+              <i data-lucide="target" style="color: var(--secondary);"></i> Our Vision
+            </h3>
+            <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.7;">
+              Helping every student find the right direction for their future by democratizing access to comprehensive career knowledge, required qualifications, and industry outlooks.
+            </p>
+          </div>
+          <div>
+            <h3 style="font-size: 1.25rem; color: var(--primary); margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
+              <i data-lucide="shield-check" style="color: var(--success);"></i> Our Commitment
+            </h3>
+            <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.7;">
+              We believe quality guidance should be accessible to all. Our platform provides unbiased insights into skills, salary scales, daily duties, and direct educational roadmaps.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===================================================================
+       FOOTER
+       =================================================================== -->
+  <footer class="footer" id="contact">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 14px;">
+            <img src="assets/images/logo.png" alt="Logo" style="height: 44px; width: auto; background: #FFFFFF; border-radius: 8px; padding: 4px;">
+            <div>
+              <div class="footer-brand-title" style="margin-bottom: 0;">Career Guidance System</div>
+              <div style="font-size: 0.72rem; color: var(--accent); letter-spacing: 0.1em; text-transform: uppercase;">Explore • Discover • Choose</div>
+            </div>
+          </div>
+          <p class="footer-desc">
+            A comprehensive frontend career guidance platform designed for school students, higher secondary learners, college students, and recent graduates.
+          </p>
+          <span class="footer-tagline-badge">Vision: Helping every student find the right direction</span>
+        </div>
+
+        <div>
+          <h4 class="footer-heading">Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html" class="footer-link">Home</a></li>
+            <li><a href="careers.html" class="footer-link">Explore Careers</a></li>
+            <li><a href="assessment.html" class="footer-link">Interest Assessment</a></li>
+            <li><a href="dashboard.html" class="footer-link">Student Dashboard</a></li>
+            <li><a href="login.html" class="footer-link">Student Login</a></li>
+            <li><a href="register.html" class="footer-link">New Student Registration</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-heading">Career Sectors</h4>
+          <ul class="footer-links">
+            <li><a href="careers.html?category=it" class="footer-link">Information Technology</a></li>
+            <li><a href="careers.html?category=healthcare" class="footer-link">Healthcare & Medicine</a></li>
+            <li><a href="careers.html?category=engineering" class="footer-link">Engineering & Tech</a></li>
+            <li><a href="careers.html?category=business" class="footer-link">Business & Management</a></li>
+            <li><a href="careers.html?category=arts" class="footer-link">Arts & Digital Media</a></li>
+            <li><a href="careers.html?category=government" class="footer-link">Government & Civil Services</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-heading">Contact Information</h4>
+          <div class="footer-contact-item">
+            <i data-lucide="map-pin"></i>
+            <span>Education Hub, Campus Avenue, Chennai, India</span>
+          </div>
+          <div class="footer-contact-item">
+            <i data-lucide="mail"></i>
+            <span>support@careerguidance.edu</span>
+          </div>
+          <div class="footer-contact-item">
+            <i data-lucide="phone"></i>
+            <span>+91 98765 43210</span>
+          </div>
+          <div class="footer-contact-item">
+            <i data-lucide="clock"></i>
+            <span>Mon - Sat: 9:00 AM - 6:00 PM</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>
+          &copy; 2026 Career Guidance System. All rights reserved. Designed per PRD Version 1.0.
+        </div>
+        <div class="footer-legal-links">
+          <a href="#" onclick="showPrivacyModal(event)">Privacy Policy</a>
+          <a href="#" onclick="showTermsModal(event)">Terms & Conditions</a>
+          <a href="#navbar">Back to Top ↑</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
+  <script>
+    // Populate Homepage Categories
+    document.addEventListener('DOMContentLoaded', () => {
+      const catContainer = document.getElementById('homepage-categories-grid');
+      if (catContainer && typeof CAREER_CATEGORIES !== 'undefined') {
+        catContainer.innerHTML = CAREER_CATEGORIES.map(cat => `
+          <a href="careers.html?category=${cat.slug}" class="category-card ${cat.colorClass}">
+            <div class="category-header">
+              <div class="category-icon-box">
+                <i data-lucide="${cat.icon}"></i>
+              </div>
+              <h3 class="category-name">${cat.name}</h3>
+            </div>
+            <p class="category-desc">${cat.description}</p>
+            <div class="category-footer">
+              <span>${cat.count} Featured Paths</span>
+              <span style="display: flex; align-items: center; gap: 4px;">Explore <i data-lucide="chevron-right" style="width: 14px; height: 14px;"></i></span>
+            </div>
+          </a>
+        `).join('');
+      }
+
+      // Populate Spotlight Careers (3 representative roles)
+      const featContainer = document.getElementById('featured-careers-grid');
+      if (featContainer && typeof CAREER_DATABASE !== 'undefined') {
+        const featuredIds = ['frontend-developer', 'doctor-physician', 'product-manager'];
+        const featuredList = CAREER_DATABASE.filter(c => featuredIds.includes(c.id));
+        
+        featContainer.innerHTML = featuredList.map(c => `
+          <div class="career-card">
+            <div class="career-card-top">
+              <span class="career-meta-badge badge-secondary">${c.category}</span>
+              <button class="btn-bookmark ${isCareerSaved(c.id) ? 'bookmarked' : ''}" data-save-id="${c.id}" onclick="toggleSaveCareer('${c.id}')" title="Save Career">
+                <i data-lucide="${isCareerSaved(c.id) ? 'bookmark-check' : 'bookmark'}"></i>
+              </button>
+            </div>
+            <h3 class="career-title">${c.title}</h3>
+            <p class="career-desc">${c.shortDesc}</p>
+            <div class="career-info-group">
+              <div class="career-info-label"><i data-lucide="graduation-cap" style="width: 14px; height: 14px;"></i> Key Degree</div>
+              <div class="career-info-text">${c.qualifications}</div>
+            </div>
+            <div class="career-skills-tags">
+              ${c.skills.slice(0, 4).map(s => `<span class="skill-tag">${s}</span>`).join('')}
+            </div>
+            <div class="career-card-footer">
+              <div class="salary-tag">
+                <span>Avg. Compensation</span>
+                <span>${c.averageSalary}</span>
+              </div>
+              <button class="btn btn-outline btn-sm" onclick="openCareerModal('${c.id}')">
+                <span>View Details</span>
+                <i data-lucide="external-link" style="width: 14px; height: 14px;"></i>
+              </button>
+            </div>
+          </div>
+        `).join('');
+      }
+
+      if (window.lucide) lucide.createIcons();
+    });
+
+    function showPrivacyModal(e) {
+      e.preventDefault();
+      alert("Privacy Policy: Student data stored on this demo application is held locally within your browser's LocalStorage and is never transmitted or shared with third parties.");
+    }
+
+    function showTermsModal(e) {
+      e.preventDefault();
+      alert("Terms and Conditions: Career Guidance System provides academic and occupational guidance for educational demonstration purposes. Always verify admission criteria with respective universities.");
+    }
+  </script>
+</body>
+</html>

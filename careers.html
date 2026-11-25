@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Explore Careers | Career Guidance System</title>
+  <meta name="description" content="Browse and search careers across Information Technology, Healthcare, Engineering, Business, Arts, Government, and Science.">
+  <link rel="icon" type="image/png" href="assets/images/logo.png">
+
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+
+  <style>
+    .careers-hero {
+      background: linear-gradient(135deg, var(--primary) 0%, #1e3f7c 100%);
+      color: #FFFFFF;
+      padding: 50px 0 60px;
+      margin-bottom: 40px;
+    }
+
+    .careers-hero-content {
+      text-align: center;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .careers-search-bar {
+      position: relative;
+      max-width: 620px;
+      margin: 28px auto 0;
+    }
+
+    .search-input-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .search-input-wrapper i {
+      position: absolute;
+      left: 18px;
+      color: var(--text-light);
+      pointer-events: none;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 16px 20px 16px 52px;
+      border-radius: var(--radius-full);
+      border: 2px solid transparent;
+      font-size: 1.05rem;
+      background-color: #FFFFFF;
+      color: var(--text-main);
+      box-shadow: var(--shadow-lg);
+      outline: none;
+      transition: all var(--transition-fast);
+    }
+
+    .search-input:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 4px rgba(245, 181, 68, 0.25);
+    }
+
+    .filter-pills-bar {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      overflow-x: auto;
+      padding-bottom: 12px;
+      margin-bottom: 32px;
+      scrollbar-width: thin;
+    }
+
+    .filter-pill {
+      background-color: #FFFFFF;
+      border: 1.5px solid var(--border-color);
+      color: var(--text-main);
+      padding: 9px 18px;
+      border-radius: var(--radius-full);
+      font-size: 0.88rem;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all var(--transition-fast);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .filter-pill:hover {
+      border-color: var(--secondary);
+      color: var(--secondary);
+    }
+
+    .filter-pill.active {
+      background-color: var(--secondary);
+      border-color: var(--secondary);
+      color: #FFFFFF;
+      box-shadow: 0 4px 12px rgba(53, 106, 230, 0.25);
+    }
+
+    .filter-pill .pill-count {
+      font-size: 0.75rem;
+      background: rgba(0, 0, 0, 0.08);
+      padding: 2px 7px;
+      border-radius: var(--radius-full);
+    }
+
+    .filter-pill.active .pill-count {
+      background: rgba(255, 255, 255, 0.25);
+    }
+
+    .results-meta-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+  </style>
+
+  <!-- Lucide Icons -->
+  <script src="js/lucide.min.js"></script>
+  <script>if (!window.lucide) document.write('<script src="https://unpkg.com/lucide@latest"><\/script>');</script>
+</head>
+<body>
+
+  <!-- Header & Navigation -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="nav-brand">
+        <img src="assets/images/logo.png" alt="Career Guidance System Logo" class="nav-logo-img">
+        <div class="nav-brand-text">
+          <span class="nav-brand-title">Career Guidance</span>
+          <span class="nav-brand-subtitle">System</span>
+        </div>
+      </a>
+
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="index.html" class="nav-link"><i data-lucide="home"></i> Home</a></li>
+          <li><a href="careers.html" class="nav-link active"><i data-lucide="compass"></i> Explore Careers</a></li>
+          <li><a href="assessment.html" class="nav-link"><i data-lucide="clipboard-check"></i> Assessment</a></li>
+          <li><a href="dashboard.html" class="nav-link"><i data-lucide="layout-dashboard"></i> Dashboard</a></li>
+          <li class="mobile-actions">
+            <a href="dashboard.html" class="btn btn-outline btn-full">Dashboard</a>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <!-- Managed dynamically by main.js -->
+        <a href="login.html" class="btn btn-outline btn-sm">Log In</a>
+        <a href="register.html" class="btn btn-primary btn-sm">Register</a>
+      </div>
+
+      <button class="mobile-toggle" aria-label="Toggle navigation menu">
+        <i data-lucide="menu"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- Careers Hero Header with Live Search -->
+  <section class="careers-hero">
+    <div class="container careers-hero-content">
+      <span class="badge badge-accent" style="margin-bottom: 12px;">Comprehensive Career Directory</span>
+      <h1 style="color: #FFFFFF; font-size: 2.5rem; margin-bottom: 12px;">
+        Explore Endless Career Possibilities
+      </h1>
+      <p style="color: #CBD5E1; font-size: 1.05rem;">
+        Discover detailed roadmaps, required degrees, essential skills, and industry compensation for over 20+ prominent professions.
+      </p>
+
+      <div class="careers-search-bar">
+        <div class="search-input-wrapper">
+          <i data-lucide="search"></i>
+          <input type="text" id="career-search-input" class="search-input" placeholder="Search by title, skills (e.g. React, SQL, CAD, Medical), or sector...">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Exploration Section -->
+  <main class="container" style="margin-bottom: 80px;">
+    <!-- Filter Pills by Sector -->
+    <div class="filter-pills-bar" id="category-pills">
+      <button class="filter-pill active" data-category="all">
+        <i data-lucide="grid"></i>
+        <span>All Careers</span>
+        <span class="pill-count" id="count-all">0</span>
+      </button>
+      <button class="filter-pill" data-category="it">
+        <i data-lucide="laptop"></i>
+        <span>Information Technology</span>
+        <span class="pill-count" id="count-it">0</span>
+      </button>
+      <button class="filter-pill" data-category="healthcare">
+        <i data-lucide="activity"></i>
+        <span>Healthcare</span>
+        <span class="pill-count" id="count-healthcare">0</span>
+      </button>
+      <button class="filter-pill" data-category="engineering">
+        <i data-lucide="cpu"></i>
+        <span>Engineering</span>
+        <span class="pill-count" id="count-engineering">0</span>
+      </button>
+      <button class="filter-pill" data-category="business">
+        <i data-lucide="trending-up"></i>
+        <span>Business & Management</span>
+        <span class="pill-count" id="count-business">0</span>
+      </button>
+      <button class="filter-pill" data-category="arts">
+        <i data-lucide="palette"></i>
+        <span>Arts & Design</span>
+        <span class="pill-count" id="count-arts">0</span>
+      </button>
+      <button class="filter-pill" data-category="government">
+        <i data-lucide="landmark"></i>
+        <span>Government Jobs</span>
+        <span class="pill-count" id="count-government">0</span>
+      </button>
+      <button class="filter-pill" data-category="science">
+        <i data-lucide="microscope"></i>
+        <span>Science & Research</span>
+        <span class="pill-count" id="count-science">0</span>
+      </button>
+    </div>
+
+    <!-- Results Meta & Sort -->
+    <div class="results-meta-row">
+      <div style="font-size: 1.05rem; font-weight: 600; color: var(--primary);" id="results-count-text">
+        Showing all available careers
+      </div>
+
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <label for="sort-select" style="font-size: 0.85rem; color: var(--text-muted); font-weight: 500;">Sort By:</label>
+        <select id="sort-select" class="form-control" style="width: auto; padding: 6px 30px 6px 12px; font-size: 0.85rem;">
+          <option value="featured">Featured Order</option>
+          <option value="az">Alphabetical (A - Z)</option>
+          <option value="za">Alphabetical (Z - A)</option>
+          <option value="category">Category</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Career Cards Grid -->
+    <div class="categories-grid" id="careers-directory-grid">
+      <!-- Populated dynamically via careers.js -->
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom" style="border-top: none; padding-top: 0;">
+        <div>&copy; 2026 Career Guidance System. All rights reserved.</div>
+        <div class="footer-legal-links">
+          <a href="index.html">Home</a>
+          <a href="assessment.html">Take Assessment</a>
+          <a href="dashboard.html">My Dashboard</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
+  <script src="js/careers.js"></script>
+</body>
+</html>

@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Dashboard | Career Guidance System</title>
+  <meta name="description" content="Personalized student dashboard for career recommendations, profile management, and saved career paths.">
+  <link rel="icon" type="image/png" href="assets/images/logo.png">
+
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+
+  <style>
+    /* Dashboard specific styling */
+    .dashboard-header-banner {
+      background: linear-gradient(135deg, var(--primary) 0%, #1e3e7a 100%);
+      color: #FFFFFF;
+      padding: 44px 0;
+      border-radius: var(--radius-xl);
+      margin: 32px auto 40px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+    }
+
+    .dashboard-banner-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .student-avatar-lg {
+      width: 76px;
+      height: 76px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent) 0%, #e69d20 100%);
+      color: var(--primary-dark);
+      font-size: 2rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 3px solid rgba(255, 255, 255, 0.4);
+      flex-shrink: 0;
+    }
+
+    .dashboard-grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      margin-bottom: 36px;
+    }
+
+    .dash-card {
+      background-color: #FFFFFF;
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--border-color);
+      box-shadow: var(--shadow-sm);
+      padding: 30px;
+      transition: all var(--transition-normal);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .dash-card:hover {
+      box-shadow: var(--shadow-md);
+      border-color: rgba(53, 106, 230, 0.3);
+    }
+
+    .dash-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 22px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .dash-card-title {
+      font-size: 1.25rem;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .profile-info-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 0;
+      border-bottom: 1px dashed var(--border-color);
+      font-size: 0.92rem;
+    }
+
+    .profile-info-row:last-child {
+      border-bottom: none;
+    }
+
+    .profile-label {
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .profile-val {
+      font-weight: 600;
+      color: var(--text-main);
+      text-align: right;
+    }
+
+    .assessment-status-banner {
+      background: linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 100%);
+      border: 1px solid #BFDBFE;
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      margin-bottom: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .section-tab-nav {
+      display: flex;
+      gap: 12px;
+      border-bottom: 2px solid var(--border-color);
+      margin-bottom: 28px;
+    }
+
+    .tab-btn {
+      background: none;
+      border: none;
+      font-size: 1.05rem;
+      font-weight: 600;
+      padding: 12px 20px;
+      color: var(--text-muted);
+      cursor: pointer;
+      border-bottom: 3px solid transparent;
+      margin-bottom: -2.5px;
+      transition: all var(--transition-fast);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .tab-btn.active {
+      color: var(--secondary);
+      border-bottom-color: var(--secondary);
+    }
+
+    .empty-state-box {
+      text-align: center;
+      padding: 60px 20px;
+      background: #FFFFFF;
+      border-radius: var(--radius-lg);
+      border: 1px dashed var(--border-color);
+    }
+
+    
+ 
+  </style>
+
+  <!-- Lucide Icons -->
+  <script src="js/lucide.min.js"></script>
+  <script>if (!window.lucide) document.write('<script src="https://unpkg.com/lucide@latest"><\/script>');</script>
+</head>
+<body>
+
+  <!-- ===================================================================
+       HEADER & NAVIGATION
+       =================================================================== -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="nav-brand">
+        <img src="assets/images/logo.png" alt="Career Guidance System Logo" class="nav-logo-img">
+        <div class="nav-brand-text">
+          <span class="nav-brand-title">Career Guidance</span>
+          <span class="nav-brand-subtitle">System</span>
+        </div>
+      </a>
+
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="index.html" class="nav-link"><i data-lucide="home"></i> Home</a></li>
+          <li><a href="careers.html" class="nav-link"><i data-lucide="compass"></i> Explore Careers</a></li>
+          <li><a href="assessment.html" class="nav-link"><i data-lucide="clipboard-check"></i> Assessment</a></li>
+          <li><a href="dashboard.html" class="nav-link active"><i data-lucide="layout-dashboard"></i> Dashboard</a></li>
+          <li class="mobile-actions">
+            <button onclick="handleLogout()" class="btn btn-outline btn-full" style="color: var(--danger); border-color: var(--danger);"><i data-lucide="log-out"></i> Logout</button>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <!-- Rendered by js/main.js and js/dashboard.js -->
+        <button onclick="handleLogout()" class="btn btn-outline btn-sm" style="color: var(--danger); border-color: rgba(239, 68, 68, 0.4);">
+          <i data-lucide="log-out"></i>
+          <span>Logout</span>
+        </button>
+      </div>
+
+      <button class="mobile-toggle" aria-label="Toggle navigation menu">
+        <i data-lucide="menu"></i>
+      </button>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Welcome Header Banner -->
+    <div class="dashboard-header-banner">
+      <div style="padding: 0 36px;" class="dashboard-banner-content">
+        <div style="display: flex; align-items: center; gap: 24px;">
+          <div class="student-avatar-lg" id="dash-avatar-letter">S</div>
+          <div>
+            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 6px;">
+              <span class="badge badge-accent">Verified Student Profile</span>
+              <span style="font-size: 0.8rem; color: #94A3B8;" id="dash-joined-date">Active Member</span>
+            </div>
+            <h1 style="color: #FFFFFF; font-size: 2.1rem; margin-bottom: 4px;" id="dash-welcome-name">
+              Welcome, Student! 👋
+            </h1>
+            <p style="color: #CBD5E1; font-size: 1rem;" id="dash-education-summary">
+              Explore your personalized career suggestions and assessment insights
+            </p>
+          </div>
+        </div>
+
+        <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+          <a href="assessment.html" class="btn btn-accent btn-sm">
+            <i data-lucide="sparkles"></i>
+            <span>Take Assessment</span>
+          </a>
+          <a href="careers.html" class="btn btn-outline btn-sm" style="color: #FFFFFF; border-color: rgba(255, 255, 255, 0.4);">
+            <i data-lucide="compass"></i>
+            <span>Browse Careers</span>
+          </a>
+          <button class="btn btn-secondary btn-sm" id="btn-open-edit-modal">
+            <i data-lucide="edit-3"></i>
+            <span>Edit Profile</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Career Assessment Status Card -->
+    <div class="assessment-status-banner" id="dash-assessment-banner">
+      <!-- Populated dynamically via dashboard.js -->
+    </div>
+
+    <!-- Student Profile & Education Details Grid -->
+    <div class="dashboard-grid-2">
+      <!-- Card 1: Student Profile Summary -->
+      <div class="dash-card">
+        <div class="dash-card-header">
+          <h2 class="dash-card-title">
+            <i data-lucide="user" style="color: var(--secondary);"></i>
+            <span>Student Profile Summary</span>
+          </h2>
+          <button class="btn btn-outline-primary btn-sm" id="btn-edit-profile-trigger">
+            <i data-lucide="edit-2"></i> Edit
+          </button>
+        </div>
+
+        <div class="profile-info-row">
+          <span class="profile-label">Full Name</span>
+          <span class="profile-val" id="profile-fullname">-</span>
+        </div>
+        <div class="profile-info-row">
+          <span class="profile-label">Email Address</span>
+          <span class="profile-val" id="profile-email">-</span>
+        </div>
+        <div class="profile-info-row">
+          <span class="profile-label">Phone Number</span>
+          <span class="profile-val" id="profile-phone">-</span>
+        </div>
+        <div class="profile-info-row">
+          <span class="profile-label">Username</span>
+          <span class="profile-val" id="profile-username">-</span>
+        </div>
+        <div class="profile-info-row">
+          <span class="profile-label">Date of Birth</span>
+          <span class="profile-val" id="profile-dob">-</span>
+        </div>
+        <div class="profile-info-row">
+          <span class="profile-label">Gender</span>
+          <span class="profile-val" id="profile-gender">-</span>
+        </div>
+      </div>
+
+      <!-- Card 2: Educational Details -->
+      <div class="dash-card">
+        <div class="dash-card-header">
+          <h2 class="dash-card-title">
+            <i data-lucide="graduation-cap" style="color: var(--secondary);"></i>
+            <span>Education Details</span>
+          </h2>
+          <span class="badge badge-primary" id="profile-level-badge">Undergraduate</span>
+        </div>
+
+        <div class="profile-info-row">
+          <span class="profile-label">Current Education Level</span>
+          <span class="profile-val" id="profile-edu-level">-</span>
+        </div>
+        <div class="profile-info-row">
+          <span class="profile-label">Qualification / Degree</span>
+          <span class="profile-val" id="profile-qualification">-</span>
+        </div>
+        <div class="profile-info-row">
+          <span class="profile-label">School / College Name</span>
+          <span class="profile-val" id="profile-institution">-</span>
+        </div>
+        <div class="profile-info-row">
+          <span class="profile-label">Stream / Specialization</span>
+          <span class="profile-val" id="profile-stream">-</span>
+        </div>
+        <div class="profile-info-row">
+          <span class="profile-label">Completion Year</span>
+          <span class="profile-val" id="profile-year">-</span>
+        </div>
+        <div class="profile-info-row">
+          <span class="profile-label">Guidance Pathway</span>
+          <span class="profile-val" style="color: var(--success); font-weight: 700;">Active & Optimized</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dashboard Tabs: Recommended Careers vs Saved Careers -->
+    <div class="section-tab-nav">
+      <button class="tab-btn active" id="tab-btn-recommended" onclick="switchDashboardTab('recommended')">
+        <i data-lucide="sparkles"></i>
+        <span>Recommended Careers</span>
+        <span class="badge badge-secondary" id="recommended-count-badge">0</span>
+      </button>
+      <button class="tab-btn" id="tab-btn-saved" onclick="switchDashboardTab('saved')">
+        <i data-lucide="bookmark"></i>
+        <span>Saved Careers</span>
+        <span class="badge badge-accent" id="saved-count-badge">0</span>
+      </button>
+    </div>
+
+    <!-- Tab Content 1: Recommended Careers -->
+    <section id="tab-content-recommended" style="margin-bottom: 60px;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; flex-wrap: wrap; gap: 12px;">
+        <div>
+          <h3 style="font-size: 1.4rem; color: var(--primary);">Curated Careers For You</h3>
+          <p style="font-size: 0.9rem; color: var(--text-muted);" id="recommendation-subtitle">
+            Suggested based on your academic stream and completed interest assessment.
+          </p>
+        </div>
+        <a href="careers.html" class="btn btn-outline btn-sm">Explore All Careers →</a>
+      </div>
+
+      <div class="categories-grid" id="recommended-careers-grid">
+        <!-- Rendered dynamically -->
+      </div>
+    </section>
+
+    <!-- Tab Content 2: Saved Careers -->
+    <section id="tab-content-saved" style="display: none; margin-bottom: 60px;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; flex-wrap: wrap; gap: 12px;">
+        <div>
+          <h3 style="font-size: 1.4rem; color: var(--primary);">Your Saved Career Bookmarks</h3>
+          <p style="font-size: 0.9rem; color: var(--text-muted);">
+            Bookmarked career roles to review, research, and discuss with your academic mentors.
+          </p>
+        </div>
+        <a href="careers.html" class="btn btn-secondary btn-sm">
+          <i data-lucide="plus"></i> Add More Careers
+        </a>
+      </div>
+
+      <div class="categories-grid" id="saved-careers-grid">
+        <!-- Rendered dynamically -->
+      </div>
+    </section>
+  </main>
+
+  <!-- ===================================================================
+       EDIT PROFILE MODAL
+       =================================================================== -->
+  <div class="modal-overlay" id="edit-profile-modal">
+    <div class="modal-container" style="max-width: 620px;">
+      <div class="modal-header">
+        <h3 class="modal-title" style="display: flex; align-items: center; gap: 8px;">
+          <i data-lucide="user-cog" style="color: var(--secondary);"></i>
+          <span>Edit Student Profile</span>
+        </h3>
+        <button class="modal-close" id="modal-close-edit">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form id="edit-profile-form">
+          <div class="form-group" style="margin-bottom: 16px;">
+            <label class="form-label" for="edit-fullname">Full Name</label>
+            <input type="text" id="edit-fullname" class="form-control" required>
+          </div>
+
+          <div class="form-group" style="margin-bottom: 16px;">
+            <label class="form-label" for="edit-phone">Phone Number</label>
+            <input type="tel" id="edit-phone" class="form-control" required>
+          </div>
+
+          <div class="form-group" style="margin-bottom: 16px;">
+            <label class="form-label" for="edit-edulevel">Current Education Level</label>
+            <select id="edit-edulevel" class="form-control" required>
+              <option value="SSLC">SSLC (10th Standard)</option>
+              <option value="Higher Secondary">Higher Secondary (11th / 12th)</option>
+              <option value="Diploma">Diploma (Polytechnic / Vocational)</option>
+              <option value="Undergraduate">Undergraduate (B.Tech, B.Sc, B.Com, BCA, etc.)</option>
+              <option value="Postgraduate">Postgraduate (M.Tech, M.Sc, MBA, MCA, etc.)</option>
+              <option value="Graduate">Graduate (Degree Completed)</option>
+            </select>
+          </div>
+
+          <div class="form-group" style="margin-bottom: 16px;">
+            <label class="form-label" for="edit-qualification">Qualification / Standard</label>
+            <input type="text" id="edit-qualification" class="form-control" required>
+          </div>
+
+          <div class="form-group" style="margin-bottom: 16px;">
+            <label class="form-label" for="edit-institution">School / College Name</label>
+            <input type="text" id="edit-institution" class="form-control" required>
+          </div>
+
+          <div class="form-grid-2">
+            <div class="form-group" style="margin-bottom: 16px;">
+              <label class="form-label" for="edit-stream">Stream / Course</label>
+              <input type="text" id="edit-stream" class="form-control" required>
+            </div>
+            <div class="form-group" style="margin-bottom: 16px;">
+              <label class="form-label" for="edit-year">Completion Year</label>
+              <input type="number" id="edit-year" class="form-control" min="1990" max="2040" required>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline btn-sm" id="btn-cancel-edit">Cancel</button>
+        <button type="button" class="btn btn-primary btn-sm" id="btn-save-profile">
+          <i data-lucide="check"></i> Save Changes
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>
